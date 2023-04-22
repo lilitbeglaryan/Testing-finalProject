@@ -1,0 +1,17 @@
+Create min. 3 POM classes
+
+important points
+ a. POM pattern usage(BaseTest, Singleton pattern, POM classes, etc),
+ b.right location strategy(avoid using absolute locators, choose best available option),
+ c. right wait strategy(Explicit)
+
+Add  class for locators constants
+Add class for Assertion messages
+Create BasePage class
+Create BaseTest class
+Create min. 6 tests, which will use all created POM’s.
+Min. one scenario with interaction between  all created POM’s
+
+All other tests needs to include interactions from more than one POM class instance
+
+Use testNG  listeners to implement TakeScreenshot functionality for failing tests
