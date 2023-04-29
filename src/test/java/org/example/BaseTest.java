@@ -20,6 +20,7 @@ import org.testng.reporters.jq.Main;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.time.Duration;
@@ -30,24 +31,10 @@ public class BaseTest {
   public static Main_Page main;
 
   @BeforeSuite
-  public static void driver_init() {
+  public static void driver_init() throws MalformedURLException {
     ChromeOptions chromeOptions = new ChromeOptions();
-    chromeOptions.setCapability("browserVersion", "67");
-    chromeOptions.setCapability("platformName", "Windows XP");
-    try {
-      WebDriver driver = new RemoteWebDriver(new URL("http://10.116.33.195:4444"), chromeOptions);
-    }
-    catch(Exception e){
-      System.out.println(e.getMessage());
-    }
+    WebDriver driver = new RemoteWebDriver(new URL("http://10.116.33.195:4444"), chromeOptions);
     driver.get(links.SUT_base_url);
-//    ChromeOptions options = new ChromeOptions();
-//    options.addArguments("--remote-allow-origins=*");
-//    System.setProperty("webdriver.chrome.driver",
-//        "C:\\Users\\blilit\\Desktop\\AUA\\Testing_Fundamentals\\HW_3.2\\resources\\chromedriver.exe");
-//    driver = new ChromeDriver(options);
-//    driver.manage().window().maximize();
-//    driver.get(links.SUT_base_url);
     Wait wait = new FluentWait(driver).withTimeout(Duration.ofSeconds(8));
     main = new Main_Page(driver);
   }
