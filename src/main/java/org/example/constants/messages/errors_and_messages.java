@@ -8,3 +8,4 @@ public class errors_and_messages {
   public static final String alert_msg = "Your login attempt was not successful. Please try again.";
   public static final String espanol = "Localización";
 }
+

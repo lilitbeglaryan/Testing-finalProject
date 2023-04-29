@@ -5,8 +5,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 
+import java.time.Duration;
+
+import static java.time.temporal.ChronoUnit.SECONDS;
 
 
 public class Main_Page extends BasePage {
@@ -25,6 +30,12 @@ public class Main_Page extends BasePage {
     return head;
   }
 
+//  public void visibility(WebElement el, String l,int s){
+//    FluentWait wait = new FluentWait(driver);
+//    wait.withTimeout(Duration.of(s, SECONDS));
+//    wait.until(ExpectedConditions.presenceOfElementLocated());
+////    return el.
+//  }
   public WebElement getReserveRoomButton(){
     return driver.findElement(rooms);
   }
