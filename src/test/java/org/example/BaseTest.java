@@ -33,8 +33,10 @@ public class BaseTest {
   @BeforeSuite
   public static void driver_init() throws MalformedURLException {
     ChromeOptions chromeOptions = new ChromeOptions();
-    WebDriver driver = new RemoteWebDriver(new URL("http://10.116.33.195:4444"), chromeOptions);
-    driver.get(links.SUT_base_url);
+//    WebDriver driver = new RemoteWebDriver(new URL("http://10.116.33.195:4445"), chromeOptions);
+//    driver.get(links.SUT_base_url);
+
+
     Wait wait = new FluentWait(driver).withTimeout(Duration.ofSeconds(8));
     main = new Main_Page(driver);
   }
