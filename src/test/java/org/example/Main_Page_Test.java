@@ -1,9 +1,16 @@
 package org.example;
 
+import com.google.common.collect.Ordering;
 import org.example.POMs.*;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.example.constants.messages.*;
 import org.testng.annotations.Test;
+import java.util.Collections;
+
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class Main_Page_Test extends BaseTest{
@@ -31,5 +38,21 @@ public class Main_Page_Test extends BaseTest{
     Assert.assertEquals(n,1);
     n = second_page.remove_cart();
     Assert.assertEquals(n,0);
+  }
+
+  @Test
+  public void sortPrices(){
+    List<Integer> pricesAsc = second_page.sortByPrices(true);
+    List<Integer> pricesDesc = second_page.sortByPrices(false);
+
+    Assert.assertTrue(Ordering.natural().isOrdered(pricesAsc));
+    List<Integer> sortedListDesc =
+        pricesDesc.stream()
+            .sorted(Comparator.reverseOrder())
+            .collect(Collectors.toList());
+    Assert.assertEquals(pricesDesc, sortedListDesc);
+
+
+
   }
 }

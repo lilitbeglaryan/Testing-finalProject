@@ -35,8 +35,9 @@ public class BaseTest {
     ChromeOptions chromeOptions = new ChromeOptions();
 //    WebDriver driver = new RemoteWebDriver(new URL("http://10.116.33.195:4445"), chromeOptions);
 //    driver.get(links.SUT_base_url);
+    System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
 
-
+    driver = new ChromeDriver(chromeOptions);
     Wait wait = new FluentWait(driver).withTimeout(Duration.ofSeconds(8));
     main = new Main_Page(driver);
   }

@@ -13,4 +13,8 @@ public class SearchResults_locs {
   public static final String remove_from_cart = "//*[@id=\"cart_content_ajax\"]/div[1]/table/tbody/tr[1]/td[5]/a";
   public static final String cart_count = "cart-count";
 
+  public static final String  sort_options = "//*[@id=\"mfilter-content-container\"]/div[2]/div[2]/div/select";
+
+  public static final String prices = "price-new";
+
 }

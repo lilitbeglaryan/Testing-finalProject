@@ -3,10 +3,14 @@ package org.example.POMs;
 import org.example.constants.locators.SearchResults_locs;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.example.constants.messages.errors_and_messages;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SearchResults extends BasePage{
@@ -20,6 +24,8 @@ public class SearchResults extends BasePage{
   private By cart = By.xpath(SearchResults_locs.cart);
   private By remove_cart = By.xpath(SearchResults_locs.remove_from_cart);
   private By cart_items = By.className(SearchResults_locs.cart_count);
+  private By sort = By.xpath(SearchResults_locs.sort_options);
+  private By price_tags = By.className(SearchResults_locs.prices);
   public SearchResults(WebDriver d){
     driver = d;
   }
@@ -64,5 +70,24 @@ public class SearchResults extends BasePage{
     return Integer.valueOf(driver.findElement(cart_items).getText());
   }
 
+  public List<Integer> sortByPrices(boolean asc){
+    Select select = new Select(driver.findElement(sort));
+    if(asc == true){
+      select.selectByVisibleText(errors_and_messages.sort_asc);
+    }
+    else{
+      select.selectByVisibleText(errors_and_messages.sort_desc);
+    }
+
+    List<WebElement> all_prices_on_the_page = driver.findElements(price_tags);
+    List<Integer> l = new ArrayList<Integer>();
+    for (WebElement price : all_prices_on_the_page)
+    {
+      int pr = Integer.valueOf(price.getText().substring(0,price.getText().length() -2 )); // delete the space ad dram sign
+      l.add(pr);
+    }
+
+    return  l;
+  }
 
 }
