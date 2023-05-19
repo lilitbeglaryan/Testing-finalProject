@@ -1,7 +1,6 @@
 package org.example;
 
 import org.example.POMs.*;
-import org.example.constants.dataproviders.Catalog_signin;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -15,7 +14,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.time.Duration;
 
 import static java.time.temporal.ChronoUnit.SECONDS;
-import static org.example.constants.URLs.links.*;
 
 
 public class Main_Page_Test extends BaseTest{
@@ -51,14 +49,14 @@ public class Main_Page_Test extends BaseTest{
 
   @Test
   public void enterCatalog(){
-    Catalog cat_page = main.goToCatalog();
+    SearchResults cat_page = main.goToCatalog();
     Assert.assertEquals(driver.getCurrentUrl(),catalog_url);
   }
   @Test
   public void reserveRoom_Catalog(){
     Rooms r = main.getReserveRoom();
     Main_Page m = r.goBack();
-    Catalog c = m.goToCatalog();
+    SearchResults c = m.goToCatalog();
     c.getSignIn().click();
     new WebDriverWait(driver,5).until((ExpectedConditions.visibilityOf(driver.findElement(By.id("aspnetForm")))));
 
